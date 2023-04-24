@@ -9,23 +9,39 @@ const Employee = function (employee) {
 }
 
 //Insert employ into database
+<<<<<<< HEAD
 Employee.create = (newEmployee, result) => {
 
   connection.query("SELECT * FROM employee WHERE email = ?", newEmployee.email, (err, results) => {
+=======
+Employee.create=(newEmployee,result) =>{
+    
+  connection.query("SELECT * FROM employees WHERE email = ?", newEmployee.email, (err, results) => {
+>>>>>>> origin
     if (err) {
       console.log("error: ", err);
       result(null, err);
       return;
     }
+<<<<<<< HEAD
     console.log(newEmployee.email);
     console.log(result.email);
     if (results.length > 0) {
+=======
+   
+    if (results.length>0 ) {
+>>>>>>> origin
       // not found Tutorial with the id
       result({ kind: "Already exist" }, null);
       return;
     }
+<<<<<<< HEAD
     else {
       connection.query("INSERT INTO employee SET ?", newEmployee, (err, res) => {
+=======
+  else{
+    connection.query("INSERT INTO employees SET ?", newEmployee, (err, res) => {
+>>>>>>> origin
         if (err) {
           console.log("error: ", err);
           result(err, null);
@@ -43,7 +59,7 @@ Employee.create = (newEmployee, result) => {
 //get all
 
 Employee.getAll = (name, result) => {
-  let query = "SELECT * FROM employee";
+  let query = "SELECT * FROM employees";
 
   // if (name) {
   //   query += ` WHERE name LIKE '%${name}%'`;
@@ -66,8 +82,13 @@ Employee.getAll = (name, result) => {
 //Update employee
 Employee.updateById = (id, employee, result) => {
   connection.query(
+<<<<<<< HEAD
     "UPDATE employee SET name = ?, email = ?, role = ?,address = ? WHERE id = ?",
     [employee.name, employee.email, employee.role, employee.address, id],
+=======
+    "UPDATE employees SET name = ?, email = ?, role = ?,address = ? WHERE id = ?",
+    [employee.name, employee.email, employee.role,employee.address, id],
+>>>>>>> origin
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -90,7 +111,7 @@ Employee.updateById = (id, employee, result) => {
 //delete by id
 
 Employee.remove = (id, result) => {
-  connection.query("DELETE FROM employee WHERE id = ?", id, (err, res) => {
+  connection.query("DELETE FROM employees WHERE id = ?", id, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
