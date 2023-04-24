@@ -1,7 +1,14 @@
-module.exports={
+module.exports = {
+    HOST: 'localhost',
+    USER: 'root',
+    PASSWORD: 'Nitesh26@',
+    DB: 'login',
+    dialect: 'mysql',
 
-    HOST: "localhost",
-    USER: "root",
-    PASSWORD: "Nitesh26@",
-    DB: "login"
-};
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    }
+}

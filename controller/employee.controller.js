@@ -1,4 +1,10 @@
 const Employee=require('../module/employe.model');
+const db=require('../controller/db');
+//const { employees } = require('../module');
+
+//create main model
+const Employee2=db.employeess;
+const Leave=db.leaves;
 
 // create and save new Employee
 exports.create = (req,res) =>{
@@ -9,7 +15,7 @@ exports.create = (req,res) =>{
         });
     }
 
-    // Create a Tutorial
+    // Create a Employee
 const employee = new Employee({
     name: req.body.name,
     email: req.body.email,
@@ -18,7 +24,7 @@ const employee = new Employee({
   });
 
 
-  // Save Tutorial in the database
+  // Save Employee in the database
   Employee.create(employee, (err, data) => {
     if (err)
       res.status(500).send({
@@ -29,6 +35,22 @@ const employee = new Employee({
   });
 
 }
+
+// one to many relation Employee and leaves
+
+//  exports.getEmployeeLeavesDate =  async (req, res) => {
+
+//     const id = req.params.id
+
+//     const data = await Employee2.find({
+     
+//         where: { id: id }
+//     })
+
+//     res.status(200).send(data)
+
+// }
+
 
 //getall employee from database
 exports.findAll = (req, res) => {
@@ -92,3 +114,5 @@ exports.delete = (req, res) => {
   });
 };
 
+//module.exports=Employee;
+//module.exports=Employee2;
