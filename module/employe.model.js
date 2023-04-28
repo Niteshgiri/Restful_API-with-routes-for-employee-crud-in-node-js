@@ -9,39 +9,23 @@ const Employee = function (employee) {
 }
 
 //Insert employ into database
-<<<<<<< HEAD
 Employee.create = (newEmployee, result) => {
 
   connection.query("SELECT * FROM employee WHERE email = ?", newEmployee.email, (err, results) => {
-=======
-Employee.create=(newEmployee,result) =>{
-    
-  connection.query("SELECT * FROM employees WHERE email = ?", newEmployee.email, (err, results) => {
->>>>>>> origin
     if (err) {
       console.log("error: ", err);
       result(null, err);
       return;
     }
-<<<<<<< HEAD
     console.log(newEmployee.email);
     console.log(result.email);
     if (results.length > 0) {
-=======
-   
-    if (results.length>0 ) {
->>>>>>> origin
       // not found Tutorial with the id
       result({ kind: "Already exist" }, null);
       return;
     }
-<<<<<<< HEAD
     else {
       connection.query("INSERT INTO employee SET ?", newEmployee, (err, res) => {
-=======
-  else{
-    connection.query("INSERT INTO employees SET ?", newEmployee, (err, res) => {
->>>>>>> origin
         if (err) {
           console.log("error: ", err);
           result(err, null);
@@ -82,13 +66,8 @@ Employee.getAll = (name, result) => {
 //Update employee
 Employee.updateById = (id, employee, result) => {
   connection.query(
-<<<<<<< HEAD
     "UPDATE employee SET name = ?, email = ?, role = ?,address = ? WHERE id = ?",
     [employee.name, employee.email, employee.role, employee.address, id],
-=======
-    "UPDATE employees SET name = ?, email = ?, role = ?,address = ? WHERE id = ?",
-    [employee.name, employee.email, employee.role,employee.address, id],
->>>>>>> origin
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -136,7 +115,7 @@ Employee.getbyNameAndEmail = (req, res) => {
   let email = req.params.email;
 
 
-  let query = connection.query('SELECT * FROM employee WHERE name=? AND email=?', [name, email], (err, results) => {
+  let query = connection.query('SELECT * FROM employee WHERE name=? OR email=?', [name, email], (err, results) => {
 
     if (err) {
 

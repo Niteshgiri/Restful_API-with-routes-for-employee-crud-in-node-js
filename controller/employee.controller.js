@@ -114,7 +114,6 @@ exports.delete = (req, res) => {
   });
 };
 
-<<<<<<< HEAD
 
 //get leave
 
@@ -130,7 +129,3 @@ exports.findAllLeave = (req, res) => {
     else res.send(data);
   });
 };
-=======
-//module.exports=Employee;
-//module.exports=Employee2;
->>>>>>> origin
